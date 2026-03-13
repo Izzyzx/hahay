@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Uma pergunta para Lulu</title>
+
+<style>
+
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#abd4f0,#ffeef6);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+overflow:hidden;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+max-width:400px;
+width:90%;
+position:relative;
+z-index:1;
+}
+
+h1{
+color:#638edf;
+}
+
+button{
+padding:12px 20px;
+margin:10px;
+font-size:16px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+transition:0.2s;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.yes{
+background:#4d59ff;
+color:white;
+}
+
+.no{
+background:#999;
+color:white;
+position:relative;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:fall 5s linear infinite;
+pointer-events:none;
+z-index:0;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh)}
+100%{transform:translateY(110vh)}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container" id="screen">
+
+<h1>izzy...</h1>
+
+<img src="imagensily.jpg" width="150">
+
+<p>eu preparei uma coisinha pra você</p>
+
+<button class="yes" onclick="start()">começar</button>
+
+</div>
+
+<script>
+
+let startTime
+let noSize = 1
+
+function start(){
+
+startTime = Date.now()
+
+document.getElementById("screen").innerHTML = `
+
+<h1>Lulu, você me ama?</h1>
+
+<img src="imagens/dog.jpg" width="150">
+
+<button class="yes" onclick="loveExplosion(); next1()">simm</button>
+<button class="no" id="no">não</button>
+
+`
+
+moveButton()
+
+}
+
+function moveButton(){
+
+const no = document.getElementById("no")
+
+no.addEventListener("mouseover", escape)
+no.addEventListener("touchstart", escape)
+
+}
+
+function escape(){
+
+const no = document.getElementById("no")
+
+const maxX = window.innerWidth - 100
+const maxY = window.innerHeight - 50
+
+const randomX = Math.random() * maxX
+const randomY = Math.random() * maxY
+
+no.style.position = "absolute"
+no.style.left = randomX + "px"
+no.style.top = randomY + "px"
+
+noSize -= 0.1
+
+if(noSize < 0.4){
+noSize = 0.4
+}
+
+no.style.transform = "scale(" + noSize + ")"
+
+const frases = [
+"não 😡",
+"para",
+"deixa eu em paz",
+"ok talvez",
+"não consigo fugir"
+]
+
+no.innerText = frases[Math.floor(Math.random()*frases.length)]
+
+}
+
+function next1(){
+
+document.getElementById("screen").innerHTML = `
+
+<h1>hmmm 🤨</h1>
+
+<img src="imagens/auau.jpg" width="120">
+
+<p>mas você me ama quanto?</p>
+
+<button class="yes" onclick="next2()">muito</button>
+<button class="yes" onclick="next2()">MUITO MESMO, TIPO 100% </button>
+
+`
+
+}
+
+function next2(){
+
+document.getElementById("screen").innerHTML = `
+
+<h1>analisando sentimentos do Lulu...</h1>
+
+<img src="imagens/pt.jpg" width="120">
+
+<p id="loading">iniciando análise...</p>
+
+`
+
+setTimeout(()=>{
+document.getElementById("loading").innerText="calculando nível de amor..."
+},1500)
+
+setTimeout(()=>{
+document.getElementById("loading").innerText="resultado quase pronto..."
+},3000)
+
+setTimeout(()=>{
+next3()
+},4500)
+
+}
+
+function next3(){
+
+const time = Math.floor((Date.now() - startTime)/1000)
+
+document.getElementById("screen").innerHTML = `
+
+<h1>resultado</h1>
+
+<img src="imagens/coracao.png" width="120">
+
+<p>Lulu demorou <b>${time}</b> segundos para admitir que me ama.</p>
+
+<button class="yes" onclick="next4()">continuar</button>
+
+`
+
+}
+
+function next4(){
+
+document.getElementById("screen").innerHTML = `
+
+<h1>então...</h1>
+
+<p>será que estou merecendo <br><b>uma certa foto magnifíca?</b> 😌</p>
+
+<p style="font-size:14px">manda foto do peto, para o Gus ele está tristonho</p>
+
+<p style="font-size:14px"><i>ass: Gus hahay</i></p>
+
+<img src="imagens/dog.jpg" width="120">
+
+<button class="yes" onclick="letter()">última coisa</button>
+
+`
+
+}
+
+function letter(){
+
+document.getElementById("screen").innerHTML = `
+
+<h1>lembra do poema que eu nunca te mandei?</h1>
+
+<img src="imagens/fofs.jpg" width="120">
+
+<p id="carta"></p>
+
+`
+
+typeLetter()
+hearts()
+
+}
+
+function hearts(){
+
+for(let i=0;i<25;i++){
+
+const heart = document.createElement("div")
+
+heart.classList.add("heart")
+
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.animationDuration=(Math.random()*3+3)+"s"
+
+document.body.appendChild(heart)
+
+}
+
+}
+
+function typeLetter(){
+
+const text = `Princípe, eu nem sei por onde começar, e na verdade
+estar pensando em você já é um bom começo 
+AQUI FICA SUA CARTA
+`
+
+let i = 0
+const speed = 40
+
+function typing(){
+
+if(i < text.length){
+
+document.getElementById("carta").innerHTML += text.charAt(i)
+
+i++
+
+setTimeout(typing, speed)
+
+}else{
+
+showRestartButton()
+
+}
+
+}
+
+typing()
+
+}
+
+function showRestartButton(){
+
+const button = document.createElement("button")
+
+button.innerText = "Quer jogar de novo, amor?"
+
+button.className = "yes"
+
+button.onclick = function(){
+location.reload()
+}
+
+document.getElementById("screen").appendChild(button)
+
+setTimeout(showSecretButton, 4000)
+
+}
+
+function showSecretButton(){
+
+const button = document.createElement("button")
+
+button.innerText = "👀 ps: o Gus ainda está esperando a foto"
+
+button.className = "yes"
+
+button.style.marginTop = "15px"
+
+button.onclick = function(){
+alert("missão concluída. Gus está orgulhoso de você 🐶")
+}
+
+document.getElementById("screen").appendChild(button)
+
+}
+
+function loveExplosion(){
+
+for(let i=0;i<35;i++){
+
+const heart = document.createElement("div")
+
+heart.innerHTML="💖"
+
+heart.style.position="absolute"
+heart.style.left=Math.random()*100+"vw"
+heart.style.top=Math.random()*100+"vh"
+heart.style.fontSize="26px"
+heart.style.pointerEvents="none"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},2000)
+
+}
+
+}
+
+function floatingHearts(){
+
+setInterval(()=>{
+
+const heart = document.createElement("div")
+
+heart.classList.add("heart")
+
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.animationDuration=(Math.random()*3+3)+"s"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},5000)
+
+},900)
+
+}
+
+floatingHearts()
+
+</script>
+
+</body>
+</html>
