@@ -17,7 +17,8 @@ justify-content:center;
 align-items:center;
 height:100vh;
 margin:0;
-overflow:hidden;
+overflow:auto;
+
 }
 
 .container{
@@ -30,7 +31,11 @@ max-width:420px;
 width:90%;
 position:relative;
 z-index:1;
+
+max-height:80vh;
+overflow-y:auto;
 }
+
 
 h1{
 color:#638edf;
@@ -436,7 +441,7 @@ button.className = "yes"
 button.style.marginTop = "15px"
 
 button.onclick = function(){
-alert("Gus aqui.\n\nSim, eu estou analisando todas as suas respostas.\n\naté agora... aprovado ")
+alert("Gus aqui.\n\nSim, eu estou analisando todas as suas respostas.\n\naté agora... aprovado, eu te amo. ")
 }
 
 document.getElementById("screen").appendChild(button)
