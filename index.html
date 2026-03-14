@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Uma pergunta para Luke</title>
+<title>Uma pergunta para Lulu</title>
 
 <style>
 
 body{
-font-family: Arial;
+font-family: Arial, sans-serif;
 background: linear-gradient(135deg,#7bade7,#ffeef6);
 display:flex;
 justify-content:center;
@@ -27,7 +26,7 @@ padding:40px;
 border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 text-align:center;
-max-width:400px;
+max-width:420px;
 width:90%;
 position:relative;
 z-index:1;
@@ -84,11 +83,9 @@ z-index:0;
 
 <div class="container" id="screen">
 
-<h1>Luke...</h1>
+<h1>Lulu...</h1>
 
-<img src="imagens/ily.jpg" width="150">
-
-<p>eu preparei uma coisinha pra você</p>
+<p>O Gus preparou uma coisinha pra você</p>
 
 <button class="yes" onclick="start()">começar</button>
 
@@ -105,11 +102,9 @@ startTime = Date.now()
 
 document.getElementById("screen").innerHTML = `
 
-<h1>Luke, você me ama?</h1>
+<h1>Lulu, você ama o Gus?</h1>
 
-<img src="imagens/dog.jpg" width="150">
-
-<button class="yes" onclick="loveExplosion(); next1()">simm</button>
+<button class="yes" onclick="loveExplosion(); next1()">sim</button>
 <button class="no" id="no">não</button>
 
 `
@@ -152,8 +147,8 @@ no.style.transform = "scale(" + noSize + ")"
 const frases = [
 "não 😡",
 "para",
-"deixa eu em paz",
-"ok talvez",
+"Lulu por favor",
+"isso é pressão",
 "não consigo fugir"
 ]
 
@@ -165,14 +160,12 @@ function next1(){
 
 document.getElementById("screen").innerHTML = `
 
-<h1>hmmm </h1>
+<h1>hmmm...</h1>
 
-<img src="imagens/auau.jpg" width="120">
+<p>Mas o quanto você o ama?</p>
 
-<p>Mas você me ama quanto?</p>
-
-<button class="yes" onclick="next2()">MUITO</button>
-<button class="yes" onclick="next2()">MUITO MESMO, TIPO 100% </button>
+<button class="yes" onclick="next2()">muito</button>
+<button class="yes" onclick="next2()">MUITO MESMO</button>
 
 `
 
@@ -182,25 +175,27 @@ function next2(){
 
 document.getElementById("screen").innerHTML = `
 
-<h1>analisando sentimentos do Luke...</h1>
-
-<img src="imagens/pt.jpg" width="120">
+<h1>analisando sentimentos do Lulu...</h1>
 
 <p id="loading">iniciando análise...</p>
 
 `
 
 setTimeout(()=>{
-document.getElementById("loading").innerText="calculando nível de amor..."
+document.getElementById("loading").innerText="acessando banco de dados emocional..."
 },1500)
 
 setTimeout(()=>{
-document.getElementById("loading").innerText="resultado quase pronto..."
+document.getElementById("loading").innerText="detectando nível de amor..."
 },3000)
 
 setTimeout(()=>{
-next3()
+document.getElementById("loading").innerText="consultando..."
 },4500)
+
+setTimeout(()=>{
+next3()
+},6000)
 
 }
 
@@ -210,11 +205,11 @@ const time = Math.floor((Date.now() - startTime)/1000)
 
 document.getElementById("screen").innerHTML = `
 
-<h1>resultado</h1>
+<h1>resultado da análise</h1>
 
-<img src="imagens/coracao.png" width="120">
+<p>Lulu demorou <b>${time}</b> segundos para admitir que ama o Gus.</p>
 
-<p>Você demorou <b>${time}</b> segundos para admitir que me ama, achei muito ainda.</p>
+<p><b>diagnóstico final:</b> amor confirmado ✅</p>
 
 <button class="yes" onclick="next4()">continuar</button>
 
@@ -226,17 +221,19 @@ function next4(){
 
 document.getElementById("screen").innerHTML = `
 
-<h1>então...</h1>
+<h1>relatório final</h1>
 
-<p>Será que estou merecendo <br><b>uma certa foto magnifíca?</b> 😌</p>
+<p>Oi Lulu.</p>
 
-<p style="font-size:14px">Manda uma foto sorrinho para a Izzy ela está tristonha</p>
+<p>Eu analisei tudo aqui...</p>
 
-<p style="font-size:14px"><i>ass: Izzy haha</i></p>
+<p>E parece que você gosta bastante de mim.</p>
 
-<img src="imagens/dog.jpg" width="120">
+<p>Tipo... bastante mesmo.</p>
 
-<button class="yes" onclick="letter()">última coisa</button>
+<p>Então trate de continuar assim, ok?</p>
+
+<button class="yes" onclick="letter()">prometo</button>
 
 `
 
@@ -246,9 +243,7 @@ function letter(){
 
 document.getElementById("screen").innerHTML = `
 
-<h1>Escrevi uma coisinha para você  </h1>
-
-<img src="imagens/fofs.jpg" width="120">
+<h1>Gus deixou uma mensagem...</h1>
 
 <p id="carta"></p>
 
@@ -281,12 +276,110 @@ document.body.appendChild(heart)
 
 function typeLetter(){
 
-const text = `Amor, eu nem sei por onde começar, e na verdade
-estar pensando em você já é um bom começo, estar ao seu lado me ajuda 
-muito, eu sei que posso sempre confiar em você... e você em mim.
-você é um garoto incrìvel e sabe disso, em breve vamos estar juntinhos
-eu você e os gatos haha, eu te amo :)
+const text = `Lulu...
 
+tem uma coisinha que eu queria te contar.
+
+algumas semanas atrás
+eu te perguntei que horas você nasceu.
+
+e você me disse:
+9h20 da manhã.
+
+pode parecer um detalhe pequeno...
+
+mas desde aquele dia
+esse horário virou especial pra mim.
+
+eu coloquei um despertador
+para tocar todos os dias às 9h20.
+
+e sempre que ele toca
+eu lembro de uma coisa simples:
+
+foi nesse horário
+que você chegou ao mundo.
+
+e só o fato de você existir
+já significa muito pra mim.
+
+então todos os dias
+quando o despertador toca
+
+a primeira coisa que eu penso
+é em você.
+
+eu lembro do horário
+em que você nasceu
+
+e do quanto
+você é importante pra mim.
+
+aí eu vou lá
+e te mando bom dia.
+
+mas tem outra coisa
+que eu gosto muito também.
+
+quando eu acordo
+e vejo que o seu bom dia
+já está lá
+
+porque você acorda antes
+para ir pra escola...
+
+mesmo sendo um bom dia simples
+isso sempre deixa meu dia melhor.
+
+eu pensei que talvez
+um dia você fosse notar
+o horário...
+
+mas como você não notou
+eu resolvi te contar agora.
+
+porque a verdade é que
+
+9h20 virou
+um dos meus horários favoritos.
+
+é o horário em que eu paro
+por um instante
+
+e lembro de você.
+
+mesmo nos dias
+em que eu estou péssimo
+
+às vezes você fala
+alguma coisa simples
+
+ou faz algo pequeno
+
+e mesmo assim
+consegue arrancar
+um sorriso de mim.
+
+e isso é muito especial.
+
+eu gosto muito
+do que a gente tem.
+
+e sendo sincero...
+
+eu não quero perder isso.
+
+não quero perder você.
+
+eu só espero
+que a gente possa continuar assim
+
+fazendo parte
+da vida um do outro
+
+por muito mais tempo.
+
+— Gus
 `
 
 let i = 0
@@ -318,7 +411,7 @@ function showRestartButton(){
 
 const button = document.createElement("button")
 
-button.innerText = "Quer jogar de novo, amor?"
+button.innerText = "jogar de novo"
 
 button.className = "yes"
 
@@ -336,14 +429,14 @@ function showSecretButton(){
 
 const button = document.createElement("button")
 
-button.innerText = "👀 ps: A Izzy ainda está esperando a foto"
+button.innerText = "🐶 mensagem secreta"
 
 button.className = "yes"
 
 button.style.marginTop = "15px"
 
 button.onclick = function(){
-alert("missão concluída. Izzy está orgulhosa de você 🐶")
+alert("Gus aqui.\n\nSim, eu estou analisando todas as suas respostas.\n\naté agora... aprovado ")
 }
 
 document.getElementById("screen").appendChild(button)
